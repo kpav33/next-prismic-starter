@@ -1,0 +1,67 @@
+{
+  "id": "post",
+  "label": "post",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading1,heading2,heading3,heading4,heading5,heading6"
+        },
+        "type": "StructuredText"
+      },
+      "content": {
+        "config": {
+          "label": "Content",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        },
+        "type": "StructuredText"
+      },
+      "excerpt": {
+        "config": {
+          "label": "Excerpt",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "coverimage": {
+        "config": {
+          "label": "Coverimage",
+          "constraint": {},
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "date": {
+        "config": {
+          "label": "Date",
+          "placeholder": ""
+        },
+        "type": "Date"
+      },
+      "author": {
+        "config": {
+          "label": "Author",
+          "customtypes": [
+            "author"
+          ],
+          "select": "document"
+        },
+        "type": "Link"
+      },
+      "uid": {
+        "config": {
+          "label": "Slug",
+          "placeholder": ""
+        },
+        "type": "UID"
+      }
+    }
+  }
+}
