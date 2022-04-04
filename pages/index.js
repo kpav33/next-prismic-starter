@@ -7,12 +7,20 @@ import { getAllPostsForHome, getAllPostsForHomeSlovene } from "../lib/api";
 import Head from "next/head";
 import { CMS_NAME } from "../lib/constants";
 
+import useTranslation from "next-translate/useTranslation";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 export default function Index({ preview, allPosts, allPostsSlovene }) {
-  let locale = "sl";
-  const heroPost =
-    locale === "en-us" ? allPosts[0].node : allPostsSlovene[0].node;
+  const router = useRouter();
+  console.log(router.locale);
+
+  let locale = router.locale;
+  const heroPost = locale === "en" ? allPosts[0].node : allPostsSlovene[0].node;
   const morePosts =
-    locale === "en-us" ? allPosts.slice(1) : allPostsSlovene.slice(1);
+    locale === "en" ? allPosts.slice(1) : allPostsSlovene.slice(1);
+
+  const { t } = useTranslation("common");
 
   return (
     <>
@@ -21,6 +29,15 @@ export default function Index({ preview, allPosts, allPostsSlovene }) {
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
         <Container>
+          <h1>{t("title")}</h1>
+          <p>{t("description")}</p>
+          <Link href="/" locale="en">
+            <a>English</a>
+          </Link>
+          <br />
+          <Link href="/" locale="sl">
+            <a>Slovene</a>
+          </Link>
           <Intro />
           {heroPost && (
             <HeroPost
