@@ -13,8 +13,9 @@ import { useRouter } from "next/router";
 
 export default function Index({ preview, allPosts, allPostsSlovene }) {
   const router = useRouter();
-  console.log(router.locale);
+  // console.log(router.locale);
 
+  // Get the either English or Slovene post based on the locale
   let locale = router.locale;
   const heroPost = locale === "en" ? allPosts[0].node : allPostsSlovene[0].node;
   const morePosts =
@@ -57,6 +58,7 @@ export default function Index({ preview, allPosts, allPostsSlovene }) {
 }
 
 export async function getStaticProps({ preview = false, previewData }) {
+  // Create two seperate queries for each of the available locales (english and slovene)
   const allPosts = await getAllPostsForHome(previewData);
   const allPostsSlovene = await getAllPostsForHomeSlovene(previewData);
   return {

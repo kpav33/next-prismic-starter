@@ -14,7 +14,7 @@ import { CMS_NAME } from "../../lib/constants";
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter();
-  console.log(post, morePosts, preview);
+  // console.log(post, morePosts, preview);
   if (!router.isFallback && !post?._meta?.uid) {
     return <ErrorPage statusCode={404} />;
   }
@@ -59,7 +59,8 @@ export async function getStaticProps({
   previewData,
   locale,
 }) {
-  console.log("LOCALE: ", locale);
+  // console.log("LOCALE: ", locale);
+  // Pass the appropriate locale to the query
   const passLocale = locale === "en" ? "en-us" : locale;
   const data = await getPostAndMorePosts(params.slug, previewData, passLocale);
 
@@ -73,7 +74,7 @@ export async function getStaticProps({
 }
 
 export async function getStaticPaths({ locale }) {
-  console.log("STATIC PATHS: ", locale);
+  // console.log("STATIC PATHS: ", locale);
   const allPosts = await getAllPostsWithSlug((locale = "en-us"));
   return {
     paths: allPosts?.map(({ node }) => `/posts/${node._meta.uid}`) || [],
